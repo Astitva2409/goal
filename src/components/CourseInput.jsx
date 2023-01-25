@@ -14,11 +14,13 @@ const CourseInput = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    if (enteredValue.trim().length === 0) {
+    const goalText = enteredValue
+    setEnteredValue('');
+    if (goalText.trim().length === 0) {
       setIsValid(false);
       return;
     }
-    props.onAddGoal(enteredValue);
+    props.onAddGoal(goalText);
   };
 
   return (
@@ -31,6 +33,7 @@ const CourseInput = (props) => {
             type="text"
             onChange={goalInputChangeHandler}
             placeholder="Enter your goal"
+            value={enteredValue}
           />
         </div>
         <Button type="submit">Add Goal</Button>
